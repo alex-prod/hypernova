@@ -9,6 +9,9 @@ import createVM from './createVM';
 export default (files, vmOptions) => {
   const fileEntries = Object.entries(files);
 
+  //  ALEX: patch to take in a ReactJS src file as an object
+  // fileEntries - array of objects
+
   const vm = createVM({
     cacheSize: fileEntries.length,
     ...vmOptions,
@@ -16,6 +19,9 @@ export default (files, vmOptions) => {
 
   const resolvedFiles = fileEntries.reduce((components, [fileName, filePath]) => {
     const code = fs.readFileSync(filePath, 'utf-8');
+
+    //  ALEX: patch to take in a ReactJS src file as an object
+    // code - source code from fileEntries
 
     try {
       // Load the bundle on startup so we can cache its exports.

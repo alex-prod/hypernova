@@ -97,6 +97,9 @@ class Module {
     return module;
   }
 
+      //  ALEX: patch to take in a ReactJS src file as an object and  a file
+      // link parent to previous   CHORD link
+      
   static loadFile(file, parent) {
     const filename = NativeModule._resolveFilename(file, parent);
 

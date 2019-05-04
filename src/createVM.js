@@ -2,6 +2,9 @@ import lruCache from 'lru-cache';
 import crypto from 'crypto';
 import Module from './Module';
 
+    //  ALEX: patch to perform CHORD node selection
+
+
 function defaultGetKey(name, code) {
   const hash = crypto.createHash('sha1').update(code).digest('hex');
   return `${name}::${hash}`;
@@ -15,6 +18,7 @@ export default (options = {}) => {
     max: options.cacheSize,
   });
 
+      //  ALEX: replace with CHROD getKey -> {name: name_hash} for consistent_hashing
   const getKey = options.getKey || defaultGetKey;
 
   return {
